@@ -35,23 +35,38 @@ function setup() {
 
     x = windowWidth/255;
     y = windowHeight/255;
+    midX = windowWidth/2;
     var1 = map(mouseX/x, 0, 255, 0, 255);
     var2 = map(mouseY/y, 0, 255, 0, 255);
     radius1 = (windowWidth/mouseX)*30;
     radius3 = (windowWidth/(windowWidth-mouseX))*30;
     radius2 = abs(radius1-radius3)/2;
-
+    if(radius1 >= radius3)
+    {
+      radius2 = radius1/2;
+    }
+    else
+    {
+      radius2 = radius3/2;
+    }
+    
     strokeWeight(0);
+    col1 = color(var1,var2,220);
+    col2 = color(255-var1,255-var2,220);
 
-    fill(var1,var2,220);
+    //fill(var1,var2,220);
+    fill(var1,0,var2);
     circle(windowWidth/6,windowHeight/6, radius1);
     circle(windowWidth/6,5*windowHeight/6, radius1);
 
-    fill(var1-(255-var1), var2-(255-var2),220);
+    //fill(var1-(255-var1), var2-(255-var2),220);
+    inter = lerpColor(col1,col2,0.5);
+    fill(inter);
     circle(windowWidth/2,windowHeight/6, radius2);
     circle(windowWidth/2,5*windowHeight/6, radius2);
 
-    fill(255-var1,255-var2,220);
+    //fill(255-var1,255-var2,220);
+    fill(255-var1,0,255-var2);
     circle(5*windowWidth/6,windowHeight/6, radius3);
     circle(5*windowWidth/6,5*windowHeight/6, radius3);
 
