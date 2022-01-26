@@ -11,8 +11,8 @@ function setup() {
   list2 = [20,120,240];
 
   function draw() {
-    //background(220);
-
+    background(240);
+    /*
     //fill(112,155,220);
     strokeWeight(0);
     circle(x,y,10);
@@ -21,8 +21,8 @@ function setup() {
     y = y + speedY;
     color1 = color(173, 222, 255);
     color2 = color(255, 210, 173);
-
-    if(x >= windowWidth || x <= 0)
+    */
+   /* if(x >= windowWidth || x <= 0)
     {
         speedX = (-1)*speedX;
         fill(color1);
@@ -31,6 +31,26 @@ function setup() {
     {
         speedY = (-1)*speedY;
         fill(color2);
-    }
+    } */
+
+    x = windowWidth/255;
+    y = windowHeight/255;
+    var1 = map(mouseX/x, 0, 255, 0, 255);
+    var2 = map(mouseY/y, 0, 255, 0, 255);
+
+    strokeWeight(0);
+    fill(var1,var2,220);
+    circle(windowWidth/7,windowHeight/7, windowWidth/12);
+    fill(var1-(255-var1), var2-(255-var2),220);
+    circle(windowWidth/2,windowHeight/7, windowWidth/12);
+    fill(255-var1,255-var2,220);
+    circle(6*windowWidth/7,windowHeight/7, windowWidth/12);
+    fill(var1,var2,220);
+    circle(windowWidth/7,6*windowHeight/7, windowWidth/12);
+    fill(var1-(255-var1), var2-(255-var2),220);
+    circle(windowWidth/2,6*windowHeight/7, windowWidth/12);
+    fill(255-var1,255-var2,220);
+    circle(6*windowWidth/7,6*windowHeight/7, windowWidth/12);
+
 
   }
