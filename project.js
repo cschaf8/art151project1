@@ -58,17 +58,27 @@ function setup() {
     fill(var1,0,var2);
     circle(windowWidth/6,windowHeight/6, radius1);
     circle(windowWidth/6,5*windowHeight/6, radius1);
+    fill(255-var1,0,255-var2)
+    circle(windowWidth/6,windowHeight/6, radius1/2);
+    circle(windowWidth/6,5*windowHeight/6, radius1/2);
 
     //fill(var1-(255-var1), var2-(255-var2),220);
-    inter = lerpColor(col1,col2,0.5);
+    inter = lerpColor(col1,col2,0.25);
+    inter2 = lerpColor(col1,col2,0.75);
     fill(inter);
     circle(windowWidth/2,windowHeight/6, radius2);
     circle(windowWidth/2,5*windowHeight/6, radius2);
+    fill(inter2);
+    circle(windowWidth/2,windowHeight/6, radius2/2);
+    circle(windowWidth/2,5*windowHeight/6, radius2/2);
 
     //fill(255-var1,255-var2,220);
     fill(255-var1,0,255-var2);
     circle(5*windowWidth/6,windowHeight/6, radius3);
     circle(5*windowWidth/6,5*windowHeight/6, radius3);
+    fill(var1,0,var2);
+    circle(5*windowWidth/6,windowHeight/6, radius3/2);
+    circle(5*windowWidth/6,5*windowHeight/6, radius3/2);
 
 
   }
