@@ -12,16 +12,6 @@ function setup() {
   list1 = [25,75,125];
   list2 = [20,120,240];
 
-  // colorR = (255,204,204);
-  // colorO = (255,229,204);
-  // colorY = (255,255,204);
-  // colorG = (204,255,204);
-  // colorB = (204,255,255);
-  // colorI = (229,204,255);
-  // colorV = (255,204,255);
-  // colorW = (255,255,255);
-  // colorBl = (0, 0, 0);
-
   let i = 0;
   let j = 3;
 
@@ -30,21 +20,11 @@ function setup() {
   greyList = [40,120,200];
 
 
-  // class leftleftCircles() {
-  //   constructor(width,height,radius,num,r,g){
-  //     this.width = width;
-  //     this.height = height;
-  //     this.radius = radius;
-  //     this.num = num;
-  //   }
-  //   for(let i = 1; i<num; i++)
-  //   {
-  //     fill(r,g,255);
-  //     circle(width,i*height,radius);
-  //   }
-  // }
-
   colList = [0,123,255];
+  let a = 10;
+  let b = 10;
+  let dir = 1;
+  let acc = 1;
 
   function draw() {
     background(roygbiv[7]);
@@ -53,61 +33,99 @@ function setup() {
     y = windowHeight/255;
     midX = windowWidth/2;
 
-    var1 = map(mouseX/x, 0, 255, 0, 255);
-    var2 = map(mouseY/y, 0, 255, 0, 255);
+    if(a>255 || a<0)
+    {
+      dir = dir*-1;
+    }
+    a = a + (acc*dir);
+    console.log(a);
 
-    radius1 = (windowWidth/mouseX)*30;
-    radius3 = (windowWidth/(windowWidth-mouseX))*30;
-    //radius2 = abs(radius1-radius3)/2;
+    var1 = map(mouseX/x, 100, 255, 100, 255, true);
+    var2 = map(mouseY/y, 100, 255, 100, 255, true);
+
+    radius1 = (windowWidth/mouseX)*20;
+    console.log("mouseX: ", mouseX);
+    console.log("radius: ", radius1)
+    if(abs(radius1)>220)
+    {
+      radius1 = 220; //limiting size of circle
+    }
+    radius9 = (windowWidth/(windowWidth-mouseX))*20;
+    if(abs(radius9)>220)
+    {
+      radius9 = 220; //limiting size of circle
+    }
+    radius5 = (radius1+radius9)/2;
+    radius3 = (radius1+radius5)/2;
     radius2 = (radius1+radius3)/2;
-    //radius4 = radius1/1.5;
-    radius4 = (radius1+radius2)/2;
-    //radius5 = radius3/1.5;
-    radius5 = (radius3+radius2)/2;
+    radius4 = (radius3+radius5)/2;
+    radius7 = (radius5+radius9)/2;
+    radius6 = (radius5+radius7)/2;
+    radius8 = (radius7+radius9)/2;
     
     strokeWeight(0);
-    col1 = color(var1,var2,colList[i]);
-    //col1 = color(var1,var2,255);
+    col1 = color(var1,var2,a);
     col2 = color(255-var1,255-var2,colList[i]);
-    //col2 = color(255-var1,255-var2,255);
     inter = lerpColor(col1,col2,0.5);
+    inter3 = lerpColor(col1,inter,0.5);
+    inter7 = lerpColor(inter,col2,0.5);
+    inter2 = lerpColor(col1,inter3,0.5);
+    inter4 = lerpColor(inter3,inter,0.5);
+    inter6 = lerpColor(inter,inter7,0.5);
+    inter8 = lerpColor(inter7,col2,0.5);
 
+    colorList = [col1,col2,inter,inter2,inter3];
     fill(col1);
     //fill(var1,var2,255);
-    for(let i = 1; i<6; i++)
+    for(let i = 1; i<10; i++)
     {
      // polygon(windowWidth/6,(i)*windowHeight/6, radius1,j);
-      circle(windowWidth/6,(i)*windowHeight/6, radius1);
-    }
+      fill(col2);
+      polygon(windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(col1);
+      circle(windowWidth/10,(i)*windowHeight/10, radius1);
 
-    //fill(var1,var2,255);
-    inter2 = lerpColor(col1,inter,0.5);
-    fill(inter2);
-    for(let i = 1; i<6; i++)
-    {
-     // polygon(2*windowWidth/6,(i)*windowHeight/6, radius4,j);
-      circle(2*windowWidth/6,(i)*windowHeight/6, radius4);
-    }
+      fill(inter8);
+      polygon(2*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter2);
+      circle(2*windowWidth/10,(i)*windowHeight/10, radius2);
 
-    fill(inter);
-    for(let i = 1; i<6; i++)
-    {
-      circle(windowWidth/2,(i)*windowHeight/6, radius2);
-    }
+      fill(inter7);
+      polygon(3*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter3);
+      circle(3*windowWidth/10,(i)*windowHeight/10, radius3);
 
-    inter3 = lerpColor(inter,col2,0.5);
-    fill(inter3);
-    //fill(255-var1,255-var2,255);
-    for(let i = 1; i<6; i++)
-    {
-      circle(4*windowWidth/6,(i)*windowHeight/6, radius5);
-    }
+      fill(inter6);
+      polygon(4*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter4);
+      circle(4*windowWidth/10,(i)*windowHeight/10, radius4);
 
-   // fill(255-var1,255-var2,255);
-    fill(col2);
-    for(let i = 1; i<6; i++)
-    {
-      circle(5*windowWidth/6,(i)*windowHeight/6, radius3);
+      fill(inter);
+      polygon(5*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter);
+      circle(5*windowWidth/10,(i)*windowHeight/10, radius5);
+
+      fill(inter4);
+      polygon(6*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter6);
+      circle(6*windowWidth/10,(i)*windowHeight/10, radius6);
+
+      fill(inter3);
+      polygon(7*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter7);
+      circle(7*windowWidth/10,(i)*windowHeight/10, radius7);
+
+      fill(inter2);
+      polygon(8*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(inter8);
+      circle(8*windowWidth/10,(i)*windowHeight/10, radius8);
+      
+      fill(col1);
+      polygon(9*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      fill(col2);
+      circle(9*windowWidth/10,(i)*windowHeight/10, radius9);
+
+
     }
 
   
