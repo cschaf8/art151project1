@@ -22,7 +22,8 @@ function setup() {
   // colorW = (255,255,255);
   // colorBl = (0, 0, 0);
 
-  i = 0;
+  let i = 0;
+  let j = 3;
 
   // roygbiv = [colorR, colorO, colorY, colorG, colorB, colorI, colorV, colorW, colorBl];
   roygbiv = ['#FFCCCC', '#FFE5CC', '#FFFFCC', '#CCFFCC', '#CCFFFF', '#E5CCFF', '#FFCCFF', '#FFFFFF', '#000000'];
@@ -75,6 +76,7 @@ function setup() {
     //fill(var1,var2,255);
     for(let i = 1; i<6; i++)
     {
+     // polygon(windowWidth/6,(i)*windowHeight/6, radius1,j);
       circle(windowWidth/6,(i)*windowHeight/6, radius1);
     }
 
@@ -83,6 +85,7 @@ function setup() {
     fill(inter2);
     for(let i = 1; i<6; i++)
     {
+     // polygon(2*windowWidth/6,(i)*windowHeight/6, radius4,j);
       circle(2*windowWidth/6,(i)*windowHeight/6, radius4);
     }
 
@@ -110,14 +113,31 @@ function setup() {
   
   }
 
+  function polygon(x, y, radius, npoints) {
+    let angle = TWO_PI / npoints;
+    beginShape();
+    for (let a = 0; a < TWO_PI; a += angle) {
+      let sx = x + cos(a) * radius;
+      let sy = y + sin(a) * radius;
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+  }
+
   function mousePressed() {
     console.log(i);
     console.log(roygbiv[i]);
     i++;
+    j++;
 
     if(i >= 3)
     {
       i = 0;
+    }
+
+    if(j >= 20)
+    {
+      j = 3;
     }
 
   }
