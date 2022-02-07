@@ -57,18 +57,12 @@ function setup() {
 
     radius1 = (windowWidth/mouseX)*30;
     radius3 = (windowWidth/(windowWidth-mouseX))*30;
-    radius2 = abs(radius1-radius3)/2;
-    radius4 = radius1/1.5;
-    radius5 = radius3/1.5;
-
-    if(radius1 >= radius3)
-    {
-      radius2 = radius1/2;
-    }
-    else
-    {
-      radius2 = radius3/2;
-    }
+    //radius2 = abs(radius1-radius3)/2;
+    radius2 = (radius1+radius3)/2;
+    //radius4 = radius1/1.5;
+    radius4 = (radius1+radius2)/2;
+    //radius5 = radius3/1.5;
+    radius5 = (radius3+radius2)/2;
     
     strokeWeight(0);
     col1 = color(var1,var2,colList[i]);
