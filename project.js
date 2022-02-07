@@ -1,6 +1,8 @@
 function setup() {
     createCanvas(windowWidth, windowHeight);
   }
+
+  let num = 0;
   
   let x = 0;
   let y = 0;
@@ -26,34 +28,39 @@ function setup() {
   roygbiv = ['#FFCCCC', '#FFE5CC', '#FFFFCC', '#CCFFCC', '#CCFFFF', '#E5CCFF', '#FFCCFF', '#FFFFFF', '#000000'];
   greyList = [40,120,200];
 
-  j = 0;
 
-  width = windowWidth;
-  height = windowHeight;
-
-  // class sixCirlces{
-
-  //   constructor(spaceA,spaceB,size){
-  //     this.spaceA = spaceA;
-  //     this.spaceB = spaceB;
-  //     this.size = size;
+  // class leftleftCircles() {
+  //   constructor(width,height,radius,num,r,g){
+  //     this.width = width;
+  //     this.height = height;
+  //     this.radius = radius;
+  //     this.num = num;
   //   }
-
-  //   circle(width/spaceA, (space)
-    
+  //   for(let i = 1; i<num; i++)
+  //   {
+  //     fill(r,g,255);
+  //     circle(width,i*height,radius);
+  //   }
   // }
 
+  colList = [0,123,255];
+
   function draw() {
-    background(roygbiv[i]);
+    background(roygbiv[7]);
    
     x = windowWidth/255;
     y = windowHeight/255;
     midX = windowWidth/2;
+
     var1 = map(mouseX/x, 0, 255, 0, 255);
     var2 = map(mouseY/y, 0, 255, 0, 255);
+
     radius1 = (windowWidth/mouseX)*30;
     radius3 = (windowWidth/(windowWidth-mouseX))*30;
     radius2 = abs(radius1-radius3)/2;
+    radius4 = radius1/1.5;
+    radius5 = radius3/1.5;
+
     if(radius1 >= radius3)
     {
       radius2 = radius1/2;
@@ -64,37 +71,47 @@ function setup() {
     }
     
     strokeWeight(0);
-    col1 = color(var1,var2,255);
-    col2 = color(255-var1,255-var2,255);
-
-    //fill(var1,var2,220);
-    //fill(var1,0,var2);
-    fill(var1,var2,255);
-    circle(windowWidth/6,windowHeight/6, radius1);
-    circle(windowWidth/6,5*windowHeight/6, radius1);
-    //ellipse(windowWidth/6, windowHeight/6, radius1, radius2);
-    //ellipse(windowWidth/6, 5*windowHeight/6, radius2, radius1);
-    //fill(255-var1,0,255-var2)
-    fill(255-var1,255-var2,255);
-    circle(windowWidth/6,windowHeight/6, radius1/2);
-    circle(windowWidth/6,5*windowHeight/6, radius1/2);
-
-    //fill(var1-(255-var1), var2-(255-var2),220);
+    col1 = color(var1,var2,colList[i]);
+    //col1 = color(var1,var2,255);
+    col2 = color(255-var1,255-var2,colList[i]);
+    //col2 = color(255-var1,255-var2,255);
     inter = lerpColor(col1,col2,0.5);
-    fill(inter);
-    circle(windowWidth/2,windowHeight/6, radius2);
-    circle(windowWidth/2,5*windowHeight/6, radius2);
 
-    //fill(255-var1,255-var2,220);
-    //fill(255-var1,0,255-var2);
-    fill(255-var1,255-var2,255);
-    circle(5*windowWidth/6,windowHeight/6, radius3);
-    circle(5*windowWidth/6,5*windowHeight/6, radius3);
-    //fill(var1,0,var2);
-    fill(var1,var2,255);
-    circle(5*windowWidth/6,windowHeight/6, radius3/2);
-    circle(5*windowWidth/6,5*windowHeight/6, radius3/2);
-    //ellipse(5*windowWidth/6,windowHeight/6, radius1/2, radius1/2);
+    fill(col1);
+    //fill(var1,var2,255);
+    for(let i = 1; i<6; i++)
+    {
+      circle(windowWidth/6,(i)*windowHeight/6, radius1);
+    }
+
+    //fill(var1,var2,255);
+    inter2 = lerpColor(col1,inter,0.5);
+    fill(inter2);
+    for(let i = 1; i<6; i++)
+    {
+      circle(2*windowWidth/6,(i)*windowHeight/6, radius4);
+    }
+
+    fill(inter);
+    for(let i = 1; i<6; i++)
+    {
+      circle(windowWidth/2,(i)*windowHeight/6, radius2);
+    }
+
+    inter3 = lerpColor(inter,col2,0.5);
+    fill(inter3);
+    //fill(255-var1,255-var2,255);
+    for(let i = 1; i<6; i++)
+    {
+      circle(4*windowWidth/6,(i)*windowHeight/6, radius5);
+    }
+
+   // fill(255-var1,255-var2,255);
+    fill(col2);
+    for(let i = 1; i<6; i++)
+    {
+      circle(5*windowWidth/6,(i)*windowHeight/6, radius3);
+    }
 
   
   }
@@ -104,40 +121,9 @@ function setup() {
     console.log(roygbiv[i]);
     i++;
 
-    if(i >= 9)
+    if(i >= 3)
     {
       i = 0;
     }
 
-    // fill(128,128,255);
-    // console.log("circle");
-    // circle(random(windowWidth), random(windowHeight), random(0,100));
-
-    // function setup() {
-    //   createCanvas(400, 400);
-    // }
-    
-    // function draw() {
-    //   background(220);
-      
-    //   for(i = 0; i<400; i+=20)
-    //     {
-    //       line(i,0, 400, 400-i);
-    //     }
-    //   for(i = 0; i<400;i+=20)
-    //     {
-    //       line(0,i,400-i,400);
-    //     }
-      
-    //   for (var gridY = 0; gridY < width+20; gridY += 20) {
-    //     for (var gridX = 0; gridX < height+20; gridX += 20) {
-    //       var diameter = dist(mouseX, mouseY, 200, 200);
-    //       diameter = diameter / 400 * 20;
-    //       push();
-    //       translate(gridX, gridY, diameter * 15);
-    //       ellipse(0, 0, diameter, diameter); // also nice: ellipse(...)
-    //       pop();
-    //     }
-    //   }
-    // }
   }
