@@ -1,0 +1,5 @@
+This is a 10x10 grid of circles and polygons. 
+The polygons are squares and sitting behind the circles and have only 1 size.
+The circles are in front of the squares and change in size with regard to where the mouse is on the x axis.
+The colors change in regard to where the mouse is on the y axis.
+There is also color changing that occurs ambiently, fading back and forth.
