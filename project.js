@@ -42,12 +42,12 @@ function setup() {
     radius1 = (windowWidth/mouseX)*20;
     //console.log("mouseX: ", mouseX);
     //console.log("radius: ", radius1)
-    if(abs(radius1)>220)
+    if(abs(radius1)>200)
     {
       radius1 = 200; //limiting size of circle
     }
     radius9 = (windowWidth/(windowWidth-mouseX))*20;
-    if(abs(radius9)>220)
+    if(abs(radius9)>200)
     {
       radius9 = 200; //limiting size of circle
     }
