@@ -15,24 +15,19 @@ function setup() {
   let i = 0;
   let j = 3;
 
-  // roygbiv = [colorR, colorO, colorY, colorG, colorB, colorI, colorV, colorW, colorBl];
-  roygbiv = ['#FFCCCC', '#FFE5CC', '#FFFFCC', '#CCFFCC', '#CCFFFF', '#E5CCFF', '#FFCCFF', '#FFFFFF', '#000000'];
-  greyList = [40,120,200];
-
-
-  colList = [0,123,255];
-  let a = 10;
+  let a = 100;
   let b = 10;
   let dir = 1;
   let acc = 1;
 
   function draw() {
-    background(roygbiv[7]);
+    background(30);
    
     x = windowWidth/255;
     y = windowHeight/255;
     midX = windowWidth/2;
 
+    //blue value fades back and forth
     if(a>255 || a<0)
     {
       dir = dir*-1;
@@ -40,20 +35,21 @@ function setup() {
     a = a + (acc*dir);
     console.log(a);
 
-    var1 = map(mouseX/x, 100, 255, 100, 255, true);
-    var2 = map(mouseY/y, 100, 255, 100, 255, true);
+    //mouse position controls red and green values
+    var1 = map(mouseX/x, 0, 204, 0, 204, true);
+    var2 = map(mouseY/y, 128, 229, 128, 229, true);
 
     radius1 = (windowWidth/mouseX)*20;
-    console.log("mouseX: ", mouseX);
-    console.log("radius: ", radius1)
+    //console.log("mouseX: ", mouseX);
+    //console.log("radius: ", radius1)
     if(abs(radius1)>220)
     {
-      radius1 = 220; //limiting size of circle
+      radius1 = 200; //limiting size of circle
     }
     radius9 = (windowWidth/(windowWidth-mouseX))*20;
     if(abs(radius9)>220)
     {
-      radius9 = 220; //limiting size of circle
+      radius9 = 200; //limiting size of circle
     }
     radius5 = (radius1+radius9)/2;
     radius3 = (radius1+radius5)/2;
@@ -65,7 +61,8 @@ function setup() {
     
     strokeWeight(0);
     col1 = color(var1,var2,a);
-    col2 = color(255-var1,255-var2,colList[i]);
+    console.log("r:",var1," g:",var2," b:",a)
+    col2 = color(255-var1,255-var2,255-a);
     inter = lerpColor(col1,col2,0.5);
     inter3 = lerpColor(col1,inter,0.5);
     inter7 = lerpColor(inter,col2,0.5);
@@ -81,47 +78,47 @@ function setup() {
     {
      // polygon(windowWidth/6,(i)*windowHeight/6, radius1,j);
       fill(col2);
-      polygon(windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(col1);
       circle(windowWidth/10,(i)*windowHeight/10, radius1);
 
       fill(inter8);
-      polygon(2*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(2*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter2);
       circle(2*windowWidth/10,(i)*windowHeight/10, radius2);
 
       fill(inter7);
-      polygon(3*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(3*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter3);
       circle(3*windowWidth/10,(i)*windowHeight/10, radius3);
 
       fill(inter6);
-      polygon(4*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(4*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter4);
       circle(4*windowWidth/10,(i)*windowHeight/10, radius4);
 
       fill(inter);
-      polygon(5*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(5*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter);
       circle(5*windowWidth/10,(i)*windowHeight/10, radius5);
 
       fill(inter4);
-      polygon(6*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(6*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter6);
       circle(6*windowWidth/10,(i)*windowHeight/10, radius6);
 
       fill(inter3);
-      polygon(7*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(7*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter7);
       circle(7*windowWidth/10,(i)*windowHeight/10, radius7);
 
       fill(inter2);
-      polygon(8*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(8*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(inter8);
       circle(8*windowWidth/10,(i)*windowHeight/10, radius8);
       
       fill(col1);
-      polygon(9*windowWidth/10,(i)*windowHeight/10, 35,4); 
+      polygon(9*windowWidth/10,(i)*windowHeight/10, windowHeight/20,4); 
       fill(col2);
       circle(9*windowWidth/10,(i)*windowHeight/10, radius9);
 
