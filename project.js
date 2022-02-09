@@ -35,8 +35,8 @@ function setup() {
     a = a + (acc*dir);
     console.log(a);
 
-    //mouse position controls red and green values
-    var1 = map(mouseX/x, 0, 204, 0, 204, true);
+    //mouse position on y axis controls red and green values
+    var1 = map(mouseY/y, 0, 204, 0, 204, true);
     var2 = map(mouseY/y, 128, 229, 128, 229, true);
 
     radius1 = (windowWidth/mouseX)*20;
